@@ -75,7 +75,7 @@ const port = PORT || 5000;
 process.on('unhandledRejection', (err, promise) => {
   console.log(`Error: ${err.message}`.red);
   // Close server & exit process
-  //server.close(() => process.exit(1));
+  server.close(() => process.exit(1));
 });
 
 exports.app = functions.https.onRequest(app);
