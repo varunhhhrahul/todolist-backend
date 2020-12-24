@@ -38,12 +38,8 @@ exports.login = asyncHandler(async (req, res, next) => {
   // Validate email/username & password
   if (email && password) {
     user = await User.findOne({ email }).select('+password');
-  } else if (username && password) {
-    user = await User.findOne({ username }).select('+password');
   } else {
-    return next(
-      new ErrorResponse('Please provide an email/username and password', 400)
-    );
+    return next(new ErrorResponse('Please provide an email and password', 400));
   }
 
   if (!user) {
